@@ -7,7 +7,9 @@ import { FluidVideoBackground } from './FluidVideoBackground';
 import { MagneticButton } from './MagneticButton';
 import { AnimatedCounter } from './AnimatedCounter';
 import { TiltCard } from './TiltCard';
+import { GoogleRatingBadge } from './GoogleRatingBadge';
 import brandLogoImg from '../assets/images/brand_logo.png';
+import agencyHeroImg from '../assets/images/agency_hero_visual_1791314665991.jpg';
 
 interface HeroProps {
   t: TranslationSchema;
@@ -44,22 +46,29 @@ export const Hero: React.FC<HeroProps> = ({ t }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           {/* Left Column: Direct Match to Reference Design */}
           <div className="lg:col-span-7 flex flex-col space-y-7">
-            {/* Brand Emblem Lockup as shown in reference design */}
-            <div className="flex items-center gap-3.5 select-none">
-              <div className="w-14 h-14 rounded-2xl bg-white border-2 border-black p-2 flex items-center justify-center shadow-md shadow-stone-200/80 shrink-0">
-                <img
-                  src={brandLogoImg}
-                  alt="ClickCraft Digital Agency Logo"
-                  className="w-full h-full object-contain rounded-lg"
-                  onError={(e) => {
-                    const target = e.currentTarget;
-                    target.src = '/brand_logo.png';
-                  }}
-                />
+            {/* Top row: Brand Emblem Lockup + Google Certified Badge */}
+            <div className="flex flex-wrap items-center gap-3 select-none">
+              <div className="flex items-center gap-3.5">
+                <div className="w-14 h-14 rounded-2xl bg-white border-2 border-black p-2 flex items-center justify-center shadow-md shadow-stone-200/80 shrink-0">
+                  <img
+                    src={brandLogoImg}
+                    alt="ClickCraft Digital Agency Logo"
+                    className="w-full h-full object-contain rounded-lg"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      target.src = '/brand_logo.png';
+                    }}
+                  />
+                </div>
+                <span className="font-display font-black text-3xl sm:text-4xl tracking-tight text-black">
+                  ClickCraft
+                </span>
               </div>
-              <span className="font-display font-black text-3xl sm:text-4xl tracking-tight text-black">
-                ClickCraft
-              </span>
+
+              {/* Official Google Partner Badge */}
+              <div className="ml-auto hidden sm:block">
+                <GoogleRatingBadge variant="partner" />
+              </div>
             </div>
 
             {/* Offer Notice (Direct match to reference design: Peach/orange pill, flame emoji, NO AI stars) */}
@@ -134,26 +143,30 @@ export const Hero: React.FC<HeroProps> = ({ t }) => {
               </MagneticButton>
             </div>
 
-            {/* Trust Guarantee kicker without any AI star icons */}
-            <p className="text-xs text-slate-500 font-semibold tracking-wide">
-              {t.hero.guaranteeText}
-            </p>
+            {/* Google Rating Badge prominently visible on Netlify */}
+            <div className="pt-2 flex flex-wrap items-center gap-4">
+              <GoogleRatingBadge variant="full" />
+              <p className="text-xs text-slate-500 font-semibold tracking-wide">
+                {t.hero.guaranteeText}
+              </p>
+            </div>
           </div>
 
-          {/* Right Column: Visual Anchor with 3D Tilt Card */}
+          {/* Right Column: Visual Anchor with 3D Tilt Card (100% visible on Netlify) */}
           <div className="lg:col-span-5 relative">
             <TiltCard glowColor="rgba(249, 115, 22, 0.25)">
               <div className="relative rounded-3xl overflow-hidden border-2 border-black/10 bg-white shadow-2xl shadow-stone-300/40 group">
-                {/* Media Container */}
-                <div className="relative aspect-[16/11] w-full bg-stone-900">
+                {/* Media Container with imported image asset */}
+                <div className="relative aspect-[16/11] w-full bg-stone-100">
                   <img
-                    src="/src/assets/images/agency_hero_visual_1791314665991.jpg"
+                    src={agencyHeroImg}
                     alt="ClickCraft Digital Agency live Meta ads performance workspace"
-                    referrerPolicy="no-referrer"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                     onError={(e) => {
                       const target = e.currentTarget;
-                      target.style.display = 'none';
+                      if (target.src !== '/images/agency_hero_visual_1791314665991.jpg') {
+                        target.src = '/images/agency_hero_visual_1791314665991.jpg';
+                      }
                     }}
                   />
 

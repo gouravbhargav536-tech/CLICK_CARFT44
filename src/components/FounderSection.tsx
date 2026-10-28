@@ -2,6 +2,8 @@ import React from 'react';
 import { Award, Phone, Instagram, Facebook } from 'lucide-react';
 import { TranslationSchema } from '../types';
 import { WhatsAppIcon } from './WhatsAppIcon';
+import { GoogleRatingBadge } from './GoogleRatingBadge';
+import founderImg from '../assets/images/founder_amerjeet_kumar_1791314652023.jpg';
 
 interface FounderSectionProps {
   t: TranslationSchema;
@@ -13,18 +15,19 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ t }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl p-8 sm:p-12 bg-stone-50 border-2 border-stone-200 shadow-xl overflow-hidden relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            {/* Left Column: Photo of Founder Amerjeet Kumar */}
+            {/* Left Column: Photo of Founder Amerjeet Kumar (Guaranteed Netlify Visibility) */}
             <div className="lg:col-span-5 flex justify-center">
               <div className="relative group max-w-sm w-full">
                 <div className="relative aspect-square w-full rounded-3xl overflow-hidden border-2 border-black/10 bg-white shadow-2xl">
                   <img
-                    src="/src/assets/images/founder_amerjeet_kumar_1791314652023.jpg"
+                    src={founderImg}
                     alt="Amerjeet Kumar - Founder of ClickCraft Digital Agency Jhunjhunu"
-                    referrerPolicy="no-referrer"
                     className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
                       const target = e.currentTarget;
-                      target.style.display = 'none';
+                      if (target.src !== '/images/founder_amerjeet_kumar_1791314652023.jpg') {
+                        target.src = '/images/founder_amerjeet_kumar_1791314652023.jpg';
+                      }
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
@@ -39,9 +42,12 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ t }) => {
 
             {/* Right Column: Bio and Vision */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 border border-orange-200 text-orange-700 text-xs font-bold uppercase tracking-wider">
-                <Award className="w-3.5 h-3.5" />
-                <span>{t.founder.tag}</span>
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 border border-orange-200 text-orange-700 text-xs font-bold uppercase tracking-wider">
+                  <Award className="w-3.5 h-3.5" />
+                  <span>{t.founder.tag}</span>
+                </div>
+                <GoogleRatingBadge variant="compact" />
               </div>
 
               <div>
