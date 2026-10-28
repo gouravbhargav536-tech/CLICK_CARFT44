@@ -10,9 +10,10 @@ import { getTranslation } from './data/translations';
 import { isRtlLanguage } from './data/languages';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { AboutMission } from './components/AboutMission';
+import { ClientMarquee } from './components/ClientMarquee';
 import { ServicesSection } from './components/ServicesSection';
 import { WhyChooseUs } from './components/WhyChooseUs';
+import { AboutMission } from './components/AboutMission';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { FounderSection } from './components/FounderSection';
 import { LeadForm } from './components/LeadForm';
@@ -91,14 +92,14 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#030712] text-slate-100 selection:bg-orange-500 selection:text-white relative overflow-x-hidden">
-      {/* 1. Cinematic Preloader Screen */}
+    <div className="min-h-screen flex flex-col bg-white text-slate-900 selection:bg-orange-500 selection:text-white relative overflow-x-hidden">
+      {/* 1. Preloader Screen on White */}
       {!isLoaded && <LoaderScreen onLoaded={() => setIsLoaded(true)} />}
 
       {/* 2. Top Scroll Progress Bar */}
       <ScrollProgressBar />
 
-      {/* 3. Awwwards Style Custom Magnetic Cursor */}
+      {/* 3. Custom Magnetic Cursor */}
       <CustomCursor />
 
       {/* 4. Navigation Top Bar */}
@@ -109,30 +110,33 @@ export default function App() {
         onOpenDeployGuide={() => setIsDeployModalOpen(true)}
       />
 
-      {/* Main Content Sections */}
-      <main className="flex-1">
-        {/* Hero Section with Interactive Three.js 3D Background */}
+      {/* Main Content Sections (100% Pure White Background) */}
+      <main className="flex-1 bg-white">
+        {/* 1. Hero Section matching reference image */}
         <Hero t={t} />
 
-        {/* Services Section with 3D Tilt Cards & Filtering */}
+        {/* 2. Scaled Brands & Verified Track Marquee */}
+        <ClientMarquee />
+
+        {/* 3. Core Agency Services with 3D Tilt Cards */}
         <ServicesSection
           t={t}
           onSelectServiceForForm={handleSelectServiceForForm}
         />
 
-        {/* Why Choose Us with Interactive Before/After Comparison Slider */}
+        {/* 4. Why Choose Us with Interactive Before/After Comparison Slider */}
         <WhyChooseUs t={t} />
 
-        {/* About & Mission Section */}
+        {/* 5. About & Mission Section (Jhunjhunu Roots & Founder Vision) */}
         <AboutMission t={t} />
 
-        {/* Client Reviews with 3D Depth Testimonials Carousel */}
+        {/* 6. Client Reviews with 3D Depth Testimonials Carousel */}
         <TestimonialsSection t={t} />
 
-        {/* Founder Section (Amerjeet Kumar) */}
+        {/* 7. Founder Section (Amerjeet Kumar Spotlight & Direct Connect) */}
         <FounderSection t={t} />
 
-        {/* Lead Capture Form with Confetti & Direct WhatsApp Launch */}
+        {/* 8. Lead Capture Form with Confetti & Direct WhatsApp Launch */}
         <LeadForm
           t={t}
           preselectedService={preselectedService}

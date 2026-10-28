@@ -179,3 +179,51 @@ export interface LeadFormData {
   service: string;
   details: string;
 }
+
+export interface BusinessTemplate {
+  id: string;
+  title: string;
+  category: string;
+  targetBusiness: string;
+  scriptSnippet: string;
+  prompt: string;
+  duration: string;
+  aspectRatio: '9:16' | '16:9' | '1:1';
+  language: string;
+  gradient: string;
+  accentColor: string;
+  tag: string;
+}
+
+export interface ModelEngine {
+  id: string;
+  name: string;
+  provider: string;
+  badge: string;
+  description: string;
+  aspectRatios: string[];
+  maxDuration: string;
+  recommendedFor: string;
+  iconType: string;
+}
+
+export interface PricingPlan {
+  id: string;
+  name: string;
+  monthlyINR: number;
+  annualINR: number;
+  credits: number;
+  videosEstimate: string;
+  isBestValue?: boolean;
+  tagline: string;
+  features: string[];
+  ctaLabel: string;
+}
+
+export interface FAQItem {
+  id: string;
+  question: string;
+  answer: string;
+  category: string;
+}
+

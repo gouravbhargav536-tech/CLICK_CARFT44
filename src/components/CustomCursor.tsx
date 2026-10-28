@@ -77,8 +77,8 @@ export const CustomCursor: React.FC = () => {
       <div
         className={`fixed top-0 left-0 rounded-full transition-transform duration-100 ease-out -translate-x-1/2 -translate-y-1/2 will-change-transform ${
           isHovered
-            ? 'w-14 h-14 bg-orange-500/15 border-2 border-orange-400/80 shadow-[0_0_20px_rgba(249,115,22,0.4)] backdrop-blur-[1px]'
-            : 'w-8 h-8 border border-blue-400/60 shadow-[0_0_12px_rgba(37,99,235,0.3)]'
+            ? 'w-14 h-14 bg-orange-500/15 border-2 border-orange-500 shadow-[0_0_15px_rgba(249,115,22,0.35)]'
+            : 'w-8 h-8 border border-black/40 shadow-sm'
         }`}
         style={{
           transform: `translate3d(${trailingPos.x}px, ${trailingPos.y}px, 0) translate(-50%, -50%) scale(${isHovered ? 1.25 : 1})`,
@@ -88,7 +88,7 @@ export const CustomCursor: React.FC = () => {
       {/* Center Precision Dot */}
       <div
         className={`fixed top-0 left-0 rounded-full -translate-x-1/2 -translate-y-1/2 will-change-transform transition-colors ${
-          isHovered ? 'w-2 h-2 bg-orange-400' : 'w-1.5 h-1.5 bg-blue-400'
+          isHovered ? 'w-2 h-2 bg-orange-600' : 'w-1.5 h-1.5 bg-black'
         }`}
         style={{
           transform: `translate3d(${pos.x}px, ${pos.y}px, 0) translate(-50%, -50%)`,

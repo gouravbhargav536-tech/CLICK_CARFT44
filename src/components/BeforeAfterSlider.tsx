@@ -31,17 +31,17 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ t }) => {
   return (
     <div className="w-full select-none">
       {/* Interactive Control Pill */}
-      <div className="flex items-center justify-between mb-4 px-2 text-xs font-semibold">
-        <span className="text-red-400 flex items-center gap-1.5">
-          <AlertTriangle className="w-3.5 h-3.5" />
+      <div className="flex items-center justify-between mb-4 px-2 text-xs font-bold">
+        <span className="text-red-700 flex items-center gap-1.5">
+          <AlertTriangle className="w-4 h-4 text-red-600" />
           <span>Ordinary Agency (Before)</span>
         </span>
-        <span className="text-slate-400 text-[11px] hidden sm:inline flex items-center gap-1">
-          <MoveHorizontal className="w-3.5 h-3.5 text-orange-400" />
+        <span className="text-slate-500 text-xs hidden sm:inline flex items-center gap-1.5 font-semibold">
+          <MoveHorizontal className="w-4 h-4 text-orange-600" />
           Drag slider to compare difference
         </span>
-        <span className="text-emerald-400 flex items-center gap-1.5">
-          <Flame className="w-3.5 h-3.5 text-orange-400" />
+        <span className="text-emerald-700 flex items-center gap-1.5">
+          <Flame className="w-4 h-4 text-orange-600" />
           <span>ClickCraft Way (After)</span>
         </span>
       </div>
@@ -55,21 +55,21 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ t }) => {
         onMouseUp={() => setIsDragging(false)}
         onTouchStart={() => setIsDragging(true)}
         onTouchEnd={() => setIsDragging(false)}
-        className="relative h-[480px] sm:h-[440px] rounded-3xl overflow-hidden border border-slate-700/80 shadow-2xl bg-slate-950 cursor-ew-resize"
+        className="relative h-[480px] sm:h-[440px] rounded-3xl overflow-hidden border-2 border-stone-200 shadow-xl bg-white cursor-ew-resize"
       >
         {/* RIGHT LAYER: CLICKCRAFT PERFORMANCE (AFTER) */}
-        <div className="absolute inset-0 p-6 sm:p-8 bg-gradient-to-br from-blue-950/60 via-slate-900 to-orange-950/30 flex flex-col justify-between">
+        <div className="absolute inset-0 p-6 sm:p-8 bg-emerald-50/20 flex flex-col justify-between">
           <div>
-            <div className="flex items-center justify-between pb-3 mb-4 border-b border-blue-500/30">
+            <div className="flex items-center justify-between pb-3 mb-4 border-b border-emerald-200">
               <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
-                  <Flame className="w-4 h-4 text-orange-400" />
+                <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+                  <Flame className="w-4 h-4 text-orange-600" />
                 </div>
-                <h3 className="text-base sm:text-lg font-bold text-white">
+                <h3 className="text-base sm:text-lg font-black text-black">
                   {t.difference.clickcraftWay}
                 </h3>
               </div>
-              <span className="px-2.5 py-1 text-[11px] font-bold rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+              <span className="px-3 py-1 text-xs font-extrabold rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
                 PROVEN GROWTH
               </span>
             </div>
@@ -78,16 +78,16 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ t }) => {
               {t.difference.points.map((pt, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center justify-end gap-2.5 p-2.5 rounded-xl bg-slate-900/90 border border-blue-900/40 shadow-sm"
+                  className="flex items-center justify-end gap-3 p-3 rounded-2xl bg-white border border-emerald-200 shadow-sm"
                 >
-                  <span className="text-xs sm:text-sm text-slate-100 font-medium">{pt.solution}</span>
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span className="text-xs sm:text-sm text-slate-900 font-bold">{pt.solution}</span>
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="pt-3 border-t border-blue-800/30 flex items-center justify-between text-xs font-bold text-emerald-400">
+          <div className="pt-3 border-t border-emerald-200 flex items-center justify-between text-xs font-black text-emerald-800">
             <span>ROI Focused · 4.8x Avg ROAS</span>
             <span>Real WhatsApp Leads</span>
           </div>
@@ -95,20 +95,20 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ t }) => {
 
         {/* LEFT LAYER: ORDINARY AGENCY (BEFORE) clipped by sliderPosition */}
         <div
-          className="absolute inset-y-0 left-0 p-6 sm:p-8 bg-gradient-to-br from-slate-950 via-slate-900/95 to-red-950/30 border-r border-slate-700 overflow-hidden flex flex-col justify-between"
+          className="absolute inset-y-0 left-0 p-6 sm:p-8 bg-rose-50/50 border-r-2 border-stone-300 overflow-hidden flex flex-col justify-between"
           style={{ width: `${sliderPosition}%` }}
         >
           <div className="w-[320px] sm:w-[500px]">
-            <div className="flex items-center justify-between pb-3 mb-4 border-b border-red-900/30">
+            <div className="flex items-center justify-between pb-3 mb-4 border-b border-rose-200">
               <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center font-bold">
                   <AlertTriangle className="w-4 h-4" />
                 </div>
-                <h3 className="text-base sm:text-lg font-bold text-red-200 truncate">
+                <h3 className="text-base sm:text-lg font-black text-red-900 truncate">
                   {t.difference.ordinaryAgency}
                 </h3>
               </div>
-              <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-red-500/20 text-red-400 border border-red-500/30">
+              <span className="px-3 py-1 text-xs font-extrabold rounded-full bg-rose-100 text-rose-800 border border-rose-300">
                 WASTED SPEND
               </span>
             </div>
@@ -117,26 +117,26 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ t }) => {
               {t.difference.points.map((pt, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center gap-2.5 p-2.5 rounded-xl bg-slate-950/80 border border-red-950/40"
+                  className="flex items-center gap-3 p-3 rounded-2xl bg-white border border-rose-200 shadow-sm"
                 >
-                  <XCircle className="w-4 h-4 text-red-400 shrink-0" />
-                  <span className="text-xs sm:text-sm text-slate-300 truncate">{pt.problem}</span>
+                  <XCircle className="w-4 h-4 text-rose-600 shrink-0" />
+                  <span className="text-xs sm:text-sm text-slate-800 font-semibold truncate">{pt.problem}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="w-[320px] sm:w-[500px] pt-3 border-t border-red-900/30 text-xs font-semibold text-red-400">
+          <div className="w-[320px] sm:w-[500px] pt-3 border-t border-rose-200 text-xs font-bold text-rose-700">
             Result: Budget burned on empty likes with zero accountable calls.
           </div>
         </div>
 
         {/* SLIDER DIVIDER LINE & DRAG HANDLE */}
         <div
-          className="absolute inset-y-0 w-1 bg-gradient-to-b from-blue-500 via-orange-400 to-amber-400 shadow-[0_0_12px_rgba(249,115,22,0.8)] pointer-events-none"
+          className="absolute inset-y-0 w-1 bg-gradient-to-b from-blue-600 via-orange-500 to-amber-500 shadow-md pointer-events-none"
           style={{ left: `${sliderPosition}%` }}
         >
-          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-slate-900 border-2 border-orange-400 shadow-xl shadow-orange-500/40 flex items-center justify-center text-white pointer-events-auto cursor-ew-resize hover:scale-110 active:scale-95 transition-transform">
+          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-black border-2 border-white shadow-xl flex items-center justify-center text-white pointer-events-auto cursor-ew-resize hover:scale-110 active:scale-95 transition-transform">
             <MoveHorizontal className="w-4 h-4 text-orange-400" />
           </div>
         </div>

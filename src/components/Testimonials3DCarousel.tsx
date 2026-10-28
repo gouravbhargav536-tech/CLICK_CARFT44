@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, ChevronLeft, ChevronRight, Quote, MapPin } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Quote, MapPin } from 'lucide-react';
 import { TranslationSchema } from '../types';
 
 interface Testimonials3DCarouselProps {
@@ -22,28 +22,23 @@ export const Testimonials3DCarousel: React.FC<Testimonials3DCarouselProps> = ({ 
       >
         {items.map((item, idx) => {
           const offset = (idx - activeIndex + items.length) % items.length;
-          // Calculate 3D position
           let transform = '';
           let zIndex = 0;
           let opacity = 0;
 
           if (offset === 0) {
-            // Active Center Card
             transform = 'translate3d(0, 0, 80px) rotateY(0deg) scale(1)';
             zIndex = 30;
             opacity = 1;
           } else if (offset === 1) {
-            // Right Card
             transform = 'translate3d(65%, 0, -80px) rotateY(-18deg) scale(0.85)';
             zIndex = 20;
-            opacity = 0.65;
+            opacity = 0.7;
           } else if (offset === items.length - 1) {
-            // Left Card
             transform = 'translate3d(-65%, 0, -80px) rotateY(18deg) scale(0.85)';
             zIndex = 20;
-            opacity = 0.65;
+            opacity = 0.7;
           } else {
-            // Hidden back cards
             transform = 'translate3d(0, 0, -200px) scale(0.7)';
             zIndex = 10;
             opacity = 0;
@@ -53,7 +48,7 @@ export const Testimonials3DCarousel: React.FC<Testimonials3DCarouselProps> = ({ 
             <div
               key={idx}
               onClick={() => setActiveIndex(idx)}
-              className="absolute w-[92%] sm:w-[480px] rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-slate-900/95 via-slate-900/90 to-blue-950/40 border border-slate-700/80 shadow-2xl backdrop-blur-xl transition-all duration-500 ease-out cursor-pointer select-none"
+              className="absolute w-[92%] sm:w-[480px] rounded-3xl p-7 sm:p-9 bg-white border-2 border-stone-200/90 shadow-2xl backdrop-blur-xl transition-all duration-500 ease-out cursor-pointer select-none text-slate-900"
               style={{
                 transform,
                 zIndex,
@@ -62,35 +57,35 @@ export const Testimonials3DCarousel: React.FC<Testimonials3DCarouselProps> = ({ 
               }}
             >
               <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-1">
-                  {[...Array(item.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                  ))}
+                <div className="flex items-center gap-2">
+                  <span className="px-3 py-1 text-xs font-black rounded-full bg-amber-100 border border-amber-300 text-amber-800 tabular-nums">
+                    5.0 ★ Client Rating
+                  </span>
                 </div>
-                <Quote className="w-6 h-6 text-slate-700" />
+                <Quote className="w-8 h-8 text-stone-300" />
               </div>
 
-              <p className="text-sm sm:text-base text-slate-200 leading-relaxed mb-6 italic">
+              <p className="text-base sm:text-lg text-slate-800 leading-relaxed mb-6 italic font-medium">
                 "{item.quote}"
               </p>
 
-              <div className="p-3 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between mb-4">
+              <div className="p-3.5 rounded-2xl bg-stone-50 border border-stone-200 flex items-center justify-between mb-5">
                 <div>
-                  <p className="text-[11px] text-slate-400">{item.metricLabel}</p>
-                  <p className="text-sm font-bold text-orange-400 tabular-nums">{item.metric}</p>
+                  <p className="text-xs text-slate-500 font-semibold">{item.metricLabel}</p>
+                  <p className="text-base font-black text-orange-600 tabular-nums">{item.metric}</p>
                 </div>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400">
+                <span className="text-xs font-extrabold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800">
                   Verified Result
                 </span>
               </div>
 
-              <div className="border-t border-slate-800/80 pt-3 flex items-center justify-between">
+              <div className="border-t border-stone-200 pt-3 flex items-center justify-between">
                 <div>
-                  <h4 className="text-sm font-bold text-white">{item.name}</h4>
-                  <p className="text-xs text-slate-300">{item.business}</p>
+                  <h4 className="text-base font-black text-black">{item.name}</h4>
+                  <p className="text-xs text-slate-600 font-bold">{item.business}</p>
                 </div>
-                <div className="flex items-center gap-1 text-[11px] text-slate-400">
-                  <MapPin className="w-3.5 h-3.5 text-orange-400" />
+                <div className="flex items-center gap-1.5 text-xs text-slate-500 font-semibold">
+                  <MapPin className="w-3.5 h-3.5 text-orange-600" />
                   <span>{item.location}</span>
                 </div>
               </div>
@@ -100,12 +95,12 @@ export const Testimonials3DCarousel: React.FC<Testimonials3DCarouselProps> = ({ 
       </div>
 
       {/* Navigation Buttons and Dots */}
-      <div className="flex items-center justify-center gap-4 mt-6">
+      <div className="flex items-center justify-center gap-4 mt-8">
         <button
           type="button"
           onClick={prev}
           aria-label="Previous Review"
-          className="p-2.5 rounded-full bg-slate-900 border border-slate-700 text-slate-300 hover:text-white hover:border-orange-500 transition-colors cursor-pointer"
+          className="p-3 rounded-full bg-white border-2 border-stone-200 text-slate-700 hover:text-black hover:border-black transition-colors cursor-pointer shadow-sm"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
@@ -117,8 +112,8 @@ export const Testimonials3DCarousel: React.FC<Testimonials3DCarouselProps> = ({ 
               type="button"
               onClick={() => setActiveIndex(i)}
               aria-label={`Go to review ${i + 1}`}
-              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                i === activeIndex ? 'w-7 bg-orange-500' : 'w-2 bg-slate-700 hover:bg-slate-600'
+              className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                i === activeIndex ? 'w-8 bg-black' : 'w-2.5 bg-stone-300 hover:bg-stone-400'
               }`}
             />
           ))}
@@ -128,7 +123,7 @@ export const Testimonials3DCarousel: React.FC<Testimonials3DCarouselProps> = ({ 
           type="button"
           onClick={next}
           aria-label="Next Review"
-          className="p-2.5 rounded-full bg-slate-900 border border-slate-700 text-slate-300 hover:text-white hover:border-orange-500 transition-colors cursor-pointer"
+          className="p-3 rounded-full bg-white border-2 border-stone-200 text-slate-700 hover:text-black hover:border-black transition-colors cursor-pointer shadow-sm"
         >
           <ChevronRight className="w-5 h-5" />
         </button>

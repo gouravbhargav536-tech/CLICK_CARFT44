@@ -22,8 +22,8 @@ export const Logo: React.FC<LogoProps> = ({ className = '', size = 'md', showTag
 
   return (
     <div className={`flex items-center gap-2.5 select-none ${className}`}>
-      {/* Official Brand Logo from User Link */}
-      <div className={`relative ${iconSizes[size]} shrink-0 rounded-xl bg-slate-900/90 border border-slate-700/80 p-0.5 shadow-md shadow-blue-950/40 flex items-center justify-center overflow-hidden group-hover:border-orange-500/60 transition-colors`}>
+      {/* Official Brand Logo from User Link with White Emblem Badge */}
+      <div className={`relative ${iconSizes[size]} shrink-0 rounded-2xl bg-white border-2 border-black p-1 shadow-sm flex items-center justify-center overflow-hidden transition-transform hover:scale-105`}>
         <picture className="w-full h-full flex items-center justify-center">
           <source srcSet={brandLogoImg} type="image/png" />
           <source srcSet="/brand_logo.png" type="image/png" />
